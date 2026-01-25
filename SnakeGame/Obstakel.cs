@@ -2,7 +2,7 @@ public class Obstakel
 
 {
 
-    public int Xpos { get; set; }
+    public int XPos { get; set; }
 
     // ?
 
