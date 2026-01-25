@@ -135,38 +135,20 @@ class Program
             }
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Score: " + score);
+            Console.SetCursorPosition(1, 1);
+            Console.Write("Score: " + score);
 
-            Console.ForegroundColor = ConsoleColor.White;
-
-            Console.Write("H");
-
-            for (int i = 0; i < bodyPositions.Count; i++)
-
+            //Draw Snake Body
+            Console.ForegroundColor = ConsoleColor.Green;
+            for (int i = 0; i < bodyPositions.Count; i += 2)
             {
-
                 Console.SetCursorPosition(bodyPositions[i], bodyPositions[i + 1]);
-
                 Console.Write("■");
-
             }
 
-            //Draw Snake
-
+            //Draw Snake Head
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(head.XPos, head.YPos);
-
-            Console.Write("■");
-
-            Console.SetCursorPosition(head.XPos, head.YPos);
-
-            Console.Write("■");
-
-            Console.SetCursorPosition(head.XPos, head.YPos);
-
-            Console.Write("■");
-
-            Console.SetCursorPosition(head.XPos, head.YPos);
-
             Console.Write("■");
 
             if (head.XPos == obstacleXPos && head.YPos == obstacleYPos)
