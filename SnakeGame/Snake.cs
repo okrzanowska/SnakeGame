@@ -31,13 +31,11 @@ class Program
 
         string movement = "RIGHT";
 
-        List<int> bodyPositions = new List<int>();
+        int snakeLength = 3;
+
+        List<int> bodyPositions = new List<int> { head.XPos, head.YPos };
 
         int score = 0;
-
-        bodyPositions.Add(head.XPos);
-
-        bodyPositions.Add(head.YPos);
 
         string obstacle = "*";
 
@@ -220,25 +218,31 @@ class Program
 
             //Hindernis treffen
 
-            if (head.XPos == obstacleXpos /* ?? */ == obstacleYPos)
+            if (head.XPos == obstacleXPos && head.YPos == obstacleYPos)
 
             {
 
                 score++;
 
-                obstacleXPos = randomNumber.Next(1, screenwidth);
+                snakeLength++;
 
-                obstacleYPos = randomNumber.Next(1, screenheight);
+                obstacleXPos = randomNumber.Next(1, screenWidth);
+
+                obstacleYPos = randomNumber.Next(1, screenHeight);
 
             }
 
-            bodyPosition.Insert(0, head.XPos);
+            bodyPositions.Insert(0, head.YPos);
 
-            bodyPosition.Insert(1, head.YPos);
+            bodyPositions.Insert(0, head.XPos);
 
-            bodyPosition.RemoveAt(bodyPosition.Count - 1);
+            while (bodyPositions.Count > snakeLength * 2)
 
-            bodyPosition.RemoveAt(bodyPosition.Count - 1);
+            {
+
+                bodyPositions.RemoveAt(bodyPositions.Count - 1);
+
+            }
 
             //Kollision mit Wände oder mit sich selbst
 
