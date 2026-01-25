@@ -46,10 +46,29 @@ class Program
         int obstacleYPos = randomNumber.Next(1, screenHeight);
 
         while (true)
-
         {
-
             Console.Clear();
+
+            if (Console.KeyAvailable)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                switch (key.Key)
+                {
+                    case ConsoleKey.UpArrow when movement != "DOWN":
+                        movement = "UP";
+                        break;
+                    case ConsoleKey.DownArrow when movement != "UP":
+                        movement = "DOWN";
+                        break;
+                    case ConsoleKey.LeftArrow when movement != "RIGHT":
+                        movement = "LEFT";
+                        break;
+                    case ConsoleKey.RightArrow when movement != "LEFT":
+                        movement = "RIGHT";
+                        break;
+                }
+            }
+            
 
             //Draw Obstacle
 
@@ -273,7 +292,7 @@ class Program
 
             }
 
-            Thread.Sleep(50);
+            Thread.Sleep(40);
 
         }
 
