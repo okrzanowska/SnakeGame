@@ -8,6 +8,6 @@ public class Obstakel
 
     public ConsoleColor ScreenColor { get; set; }
 
-    public string Character { get; set; }
+    public string Character { get; set; } = string.Empty;
 
 }
