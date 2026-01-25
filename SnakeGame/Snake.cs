@@ -35,7 +35,6 @@ class Program
 
         while (true)
         {
-            // --- 1. OBSŁUGA KLAWIATURY (Zawsze aktywna) ---
             if (Console.KeyAvailable)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
@@ -56,7 +55,6 @@ class Program
                 }
             }
 
-            // --- 2. LOGIKA RUCHU (Dzielenie prędkości Y przez 2) ---
             bool willMove = true;
             if ((movement == "UP" || movement == "DOWN") && frameCount % 2 != 0)
             {
@@ -66,7 +64,6 @@ class Program
 
             if (willMove)
             {
-                // Ruch głowy
                 switch (movement)
                 {
                     case "UP": head.YPos--; break;
@@ -75,7 +72,6 @@ class Program
                     case "RIGHT": head.XPos++; break;
                 }
 
-                // Kolizja z owocem
                 if (head.XPos == obstacleXPos && head.YPos == obstacleYPos)
                 {
                     score++;
@@ -84,7 +80,6 @@ class Program
                     obstacleYPos = rng.Next(1, playHeight - 1);
                 }
 
-                // Aktualizacja ogona (tylko gdy nastąpił ruch!)
                 bodyPositions.Insert(0, head.YPos);
                 bodyPositions.Insert(0, head.XPos);
                 while (bodyPositions.Count > snakeLength * 2)
@@ -92,7 +87,6 @@ class Program
                     bodyPositions.RemoveAt(bodyPositions.Count - 1);
                 }
 
-                // Sprawdzanie przegranej
                 bool hitWall = head.XPos <= 0 || head.XPos >= screenWidth - 1 || head.YPos <= 0 || head.YPos >= playHeight - 1;
                 if (hitWall) GameOver(score, screenWidth, playHeight);
 
@@ -105,10 +99,8 @@ class Program
                 }
             }
 
-            // --- 3. RYSOWANIE (W każdej klatce dla płynności) ---
             Console.Clear();
 
-            // Ramki
             Console.ForegroundColor = ConsoleColor.White;
             for (int x = 0; x < screenWidth; x++)
             {
@@ -125,12 +117,10 @@ class Program
                 Console.Write("■");
             }
 
-            // Owoc
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.SetCursorPosition(obstacleXPos, obstacleYPos);
             Console.Write(obstacleCharacter);
 
-            // Wąż
             Console.ForegroundColor = ConsoleColor.Green;
             for (int i = 0; i < bodyPositions.Count; i += 2)
             {
@@ -138,7 +128,7 @@ class Program
                 Console.Write("■");
             }
 
-            Thread.Sleep(40); // Szybsze odświeżanie dla lepszej reakcji
+            Thread.Sleep(40);
         }
     }
 
