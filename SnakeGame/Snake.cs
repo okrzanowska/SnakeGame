@@ -31,11 +31,13 @@ class Program
 
         string movement = "RIGHT";
 
-        int snakeLength = 3;
-
-        List<int> bodyPositions = new List<int> { head.XPos, head.YPos };
+        List<int> bodyPositions = new List<int>();
 
         int score = 0;
+
+        bodyPositions.Add(head.XPos);
+
+        bodyPositions.Add(head.YPos);
 
         string obstacle = "*";
 
@@ -128,8 +130,7 @@ class Program
 
             }
 
-            Console.ForegroundColor =  /* ?? */;
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Score: " + score);
 
             Console.ForegroundColor = ConsoleColor.White;
@@ -184,7 +185,7 @@ class Program
 
                     movement = "DOWN";
 
-                // ???
+                    break;
 
                 case ConsoleKey.LeftArrow:
 
@@ -224,25 +225,19 @@ class Program
 
                 score++;
 
-                snakeLength++;
-
                 obstacleXPos = randomNumber.Next(1, screenWidth);
 
                 obstacleYPos = randomNumber.Next(1, screenHeight);
 
             }
 
-            bodyPositions.Insert(0, head.YPos);
-
             bodyPositions.Insert(0, head.XPos);
 
-            while (bodyPositions.Count > snakeLength * 2)
+            bodyPositions.Insert(1, head.YPos);
 
-            {
+            bodyPositions.RemoveAt(bodyPositions.Count - 1);
 
-                bodyPositions.RemoveAt(bodyPositions.Count - 1);
-
-            }
+            bodyPositions.RemoveAt(bodyPositions.Count - 1);
 
             //Kollision mit Wände oder mit sich selbst
 
@@ -268,11 +263,11 @@ class Program
 
             }
 
-            for (int i = 0; i < bodyPosition.Count(); i += 2)
+            for (int i = 0; i < bodyPositions.Count(); i += 2)
 
             {
 
-                if (head.XPos == bodyPosition[i] && head.YPos == bodyPosition[i + 1])
+                if (head.XPos == bodyPositions[i] && head.YPos == bodyPositions[i + 1])
 
                 {
 
@@ -282,7 +277,7 @@ class Program
 
                     Console.SetCursorPosition(screenWidth / 5, screenHeight / 2);
 
-                    //???
+                    Console.WriteLine("Game Over");
 
                     Console.SetCursorPosition(screenWidth / 5, screenHeight / 2 + 1);
 
