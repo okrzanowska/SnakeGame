@@ -54,6 +54,58 @@ text.
 ├── Program.cs       ← główna logika gry, pętla, rysowanie, kolizje
 ├── Pixel.cs         ← klasa reprezentująca punkt (głowa / segment)
 └── Obstakel.cs      ← klasa reprezentująca pokarm 
+
+## Postęp prac i zmiany w projekcie
+
+Projekt Snake Game rozwija się szybko – poniżej podsumowanie najważniejszych zamkniętych zgłoszeń (issues) wraz z krótkim opisem, co udało się osiągnąć.
+
+### Naprawione błędy i zaimplementowane funkcjonalności
+
+- **#1** Zmiana języka gry na angielski  
+  Gra została w pełni przetłumaczona na język angielski – teraz dostępna dla szerszego grona odbiorców.
+
+- **#3** Refaktoryzacja modelu danych (klasa Obstacle)  
+  Przebudowa klasy przeszkód – kod jest czytelniejszy, bardziej modularny i łatwiejszy w dalszym rozwoju.
+
+- **#5** Płynne sterowanie i obsługa klawiatury  
+  Wprowadzono płynne poruszanie się węża (bez zacinania się przy szybkich zmianach kierunku) oraz niezawodną obsługę klawiatury.
+
+- **#6** Logika ogona i rośnięcia węża  
+  Poprawiono mechanikę wydłużania ogona po zjedzeniu pokarmu – teraz działa idealnie, bez błędów wizualnych i logicznych.
+
+- **#8** System kolizji i punktacji  
+  Zaimplementowano niezawodne wykrywanie kolizji (ze ścianami, własnym ogonem i przeszkodami) oraz system punktacji z aktualizacją w czasie rzeczywistym.
+
+- **#9** Interfejs użytkownika i czyszczenie kodu  
+  Odświeżono UI (wyświetlanie punktów, komunikatów o końcu gry itp.) oraz gruntowne posprzątanie kodu – mniej duplikacji, lepsza czytelność.
+
+## Najważniejsze scalone zmiany (merged pull requesty)
+
+Projekt zyskuje na jakości dzięki systematycznym poprawkom i refaktoryzacjom. Oto kluczowe zamknięte PR-y, które weszły do głównej gałęzi:
+
+- **#15** readme added  
+  Dodano i uzupełniono plik README.md – projekt zyskał czytelną dokumentację startową.
+
+- **#13** Feature/UI refactor  
+  Duży refactor interfejsu użytkownika i powiązanych mechanik – poprawiona czytelność kodu, lepsza organizacja komponentów UI, usunięto zbędne zależności.
+
+- **#12** Usunięto błędny powtarzający się kod  
+  Wyeliminowano duplikację kodu – czystsza baza, mniejsze ryzyko błędów przy przyszłych zmianach.
+
+- **#11** Zaimplementowano poprawną detekcję kolizji ze ścianami i ogonem węża  
+  Naprawiono i ujednolicono system wykrywania kolizji – gra kończy się teraz prawidłowo w każdej sytuacji.
+
+- **#10** Zaimplementowano poprawną detekcję kolizji ze ścianami i ogonem węża (poprzednia wersja)  
+  Wcześniejsza iteracja poprawki kolizji – scalona jako krok pośredni.
+
+- **#7** Wprowadzenie nieblokującego odczytu klawiszy i płynnego ruchu  
+  Przerobiono sterowanie na model nieblokujący → wąż porusza się płynnie nawet przy bardzo szybkich zmianach kierunku.
+
+- **#4** Dodano YPos  
+  Wprowadzono poprawne zarządzanie współrzędną Y (prawdopodobnie w kontekście pozycji obiektów / siatki gry).
+
+- **#2** Fix/fix language  
+  Poprawki językowe – ujednolicenie tekstów, usunięcie błędów tłumaczeniowych, pełna angielska wersja gry.
 Aktualny stan projektu
 
 Bardzo podstawowa wersja
