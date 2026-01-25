@@ -68,6 +68,10 @@ class Program
                         break;
                 }
             }
+            if (movement == "UP") head.YPos--;
+            if (movement == "DOWN") head.YPos++;
+            if (movement == "LEFT") head.XPos--;
+            if (movement == "RIGHT") head.XPos++;
             
 
             //Draw Obstacle
@@ -164,60 +168,6 @@ class Program
             Console.SetCursorPosition(head.XPos, head.YPos);
 
             Console.Write("■");
-
-
-
-            ConsoleKeyInfo info = Console.ReadKey();
-
-            //Game Logic
-
-            switch (info.Key)
-
-            {
-
-                case ConsoleKey.UpArrow:
-
-                    movement = "UP";
-
-                    break;
-
-                case ConsoleKey.DownArrow:
-
-                    movement = "DOWN";
-
-                    break;
-
-                case ConsoleKey.LeftArrow:
-
-                    movement = "LEFT";
-
-                    break;
-
-                case ConsoleKey.RightArrow:
-
-                    movement = "RIGHT";
-
-                    break;
-
-            }
-
-            if (movement == "UP")
-
-                head.YPos --;
-
-            if (movement == "DOWN")
-
-                head.YPos++;
-
-            if (movement == "LEFT")
-
-                head.XPos--;
-
-            if (movement == "RIGHT")
-
-                head.XPos++;
-
-            //Hindernis treffen
 
             if (head.XPos == obstacleXPos && head.YPos == obstacleYPos)
 
