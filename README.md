@@ -119,6 +119,13 @@ Co można poprawić (TODO)
 
 Dodać menu startowe
 Dodać pauzę (np. klawisz P / Spacja)
+
+## Wprowadzone zmiany
+
+Dodanie systemu punktacji
+<img width="346" height="247" alt="image" src="https://github.com/user-attachments/assets/64b24029-c247-4696-82ac-54ba0a89243c" />
+
+
 Dodać licznik punktów na ekranie w trakcie gry
 Dodać zapisywanie najlepszego wyniku
 Poprawić płynność ruchu (usunąć spowolnienie w pionie)
